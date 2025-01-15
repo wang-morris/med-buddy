@@ -16,18 +16,34 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 25rem;
-  height: 2.3rem;
+  width: 20rem;
+  height: 1.9rem;
   background-color: rgb(189, 183, 210);
   border-radius: 20px;
 }
 
 .toggle-item {
+  font-size: 0.8rem;
+  font-weight: 600;
   width: 12rem;
+  height: 1.5rem;
   background-color: #4545cf;
   border-radius: 20px;
   padding: 0.2rem;
   margin: 0.2rem;
+  padding-bottom: 1.3rem;
+}
+
+.app-form {
+  background-color: #686690;
+  height: 30rem;
+  width: 90%;
+}
+
+.form-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (width <= 768px) {
