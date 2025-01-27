@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import './App.css';
+import ToggleBar from './components/toggle-bar';
 
 export default function App() {
   useEffect(() => {
@@ -23,8 +24,7 @@ export default function App() {
         <h1>MedBuddy</h1>
       </header>
       <div className="toggle-container">
-        <button className="toggle-item">Patient context</button>
-        <button className="toggle-item">Ask a question</button>
+        <ToggleBar />
       </div>
       <form className="app-form">
         <div className="form-group">
@@ -132,15 +132,13 @@ export default function App() {
             </select>
           </div>
         </div>
-        <div>
-          <div form-textbox-container>
-            <textarea
-              className="form-textbox"
-              id="textbox-id"
-              name="textbox-name"
-              placeholder="Provide more details such as pre-existing conditions, medications, allergies, or physical and mental disabilities"
-            />
-          </div>
+        <div form-textbox-container>
+          <textarea
+            className="form-textbox"
+            id="textbox-id"
+            name="textbox-name"
+            placeholder="Provide more details such as pre-existing conditions, medications, allergies, or physical and mental disabilities"
+          />
         </div>
         <button type="reset" className="clear-button">
           Clear Form
