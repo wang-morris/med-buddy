@@ -1,0 +1,32 @@
+.toggle-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20rem;
+  height: 1.9rem;
+  background-color: rgb(189, 183, 210);
+  border-radius: 20px;
+}
+
+.toggle-item {
+  font-size: 0.8rem;
+  font-weight: 600;
+  width: 12rem;
+  height: 1.5rem;
+  border-radius: 20px;
+  padding: 0.2rem;
+  margin: 0.2rem;
+  padding-bottom: 1.3rem;
+  border: none;
+}
+
+.toggle-item.inactive-toggle {
+  background-color: transparent;
+  color: white;
+}
+
+.toggle-item.active-toggle {
+  background-color: #4545cf;
+  color: white;
+  border: none;
+}
