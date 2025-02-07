@@ -1,6 +1,15 @@
+import { useState } from 'react';
 import './form.css';
+import Calendar from './calendar';
 
 const Form: React.FC = () => {
+  const [clearCalendar, setClearCalendar] = useState(false);
+
+  function clearForm() {
+    setClearCalendar(true);
+    setTimeout(() => setClearCalendar(false), 10);
+  }
+
   return (
     <form className="app-form">
       <div className="form-group">
@@ -14,42 +23,7 @@ const Form: React.FC = () => {
           </select>
         </div>
       </div>
-      <div className="form-group">
-        <div className="demographic-wrapper">
-          <label htmlFor="dob">Date of Birth</label>
-          <div className="date-selection">
-            <select id="month" name="month" className="demographic-field">
-              <option value="">Month</option>
-              <option value="1">January</option>
-              <option value="2">February</option>
-              <option value="3">March</option>
-              <option value="4">April</option>
-              <option value="5">May</option>
-              <option value="6">June</option>
-              <option value="7">July</option>
-              <option value="8">August</option>
-              <option value="9">September</option>
-              <option value="10">October</option>
-              <option value="11">November</option>
-              <option value="12">December</option>
-            </select>
-            <input
-              className="demographic-field"
-              type="text"
-              id="day"
-              name="day"
-              placeholder="Day"
-            />
-            <input
-              className="demographic-field"
-              type="text"
-              id="year"
-              name="year"
-              placeholder="Year"
-            />
-          </div>
-        </div>
-      </div>
+      <Calendar clearCalendar={clearCalendar} />
       <div className="form-group">
         <div className="demographic-wrapper">
           <label htmlFor="height">Height</label>
@@ -76,13 +50,16 @@ const Form: React.FC = () => {
       <div className="form-group">
         <div className="demographic-wrapper">
           <label form="weight">Weight</label>
-          <input
-            className="demographic-field"
-            type="weight"
-            id="weight"
-            name="weight"
-            placeholder="Enter Weight"
-          />
+          <div className="weight-select">
+            <input
+              className="demographic-field"
+              type="weight"
+              id="weight"
+              name="weight"
+              placeholder="Enter Weight"
+            />
+            <span>lbs</span>
+          </div>
         </div>
       </div>
       <div className="form-group">
@@ -113,7 +90,7 @@ const Form: React.FC = () => {
           placeholder="Provide more details such as pre-existing conditions, medications, allergies, or physical and mental disabilities"
         />
       </div>
-      <button type="reset" className="clear-button">
+      <button type="reset" className="clear-button" onClick={clearForm}>
         Clear Form
       </button>
     </form>
