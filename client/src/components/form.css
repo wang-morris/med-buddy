@@ -7,17 +7,18 @@
   width: 100%;
   border-radius: 20px;
   margin-top: 1rem;
+  padding-top: 0.5rem;
 }
 
 .form-group {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #424152;
+  background-color: #4a4964;
   border-radius: 20px;
   padding: 0.7rem;
-  height: 3.3rem;
-  width: 95%;
+  height: 3rem;
+  width: 92%;
   max-width: 30rem;
   margin: 0.3rem;
   font-weight: 700;
@@ -27,8 +28,9 @@
   font-size: 0.8rem;
   color: rgb(186, 181, 191);
   text-align: left;
-  margin-top: 0.7rem;
+  position: relative;
   margin-left: 0.5rem;
+  top: 0.5rem;
 }
 
 .form-group select,
@@ -39,15 +41,16 @@
   font-weight: 600;
   padding: 0.4rem;
   outline: none;
-  color: rgb(227, 225, 229);
+  color: rgb(238, 234, 243);
 }
 
 .form-group select {
-  width: 8rem;
+  width: 7.3rem;
 }
 
 .form-group input {
-  width: 4rem;
+  width: 3rem;
+  margin-left: 0.2rem;
 }
 
 #sex,
@@ -56,7 +59,8 @@
 }
 
 .form-group span {
-  color: black;
+  color: rgb(238, 234, 243);
+  position: relative;
 }
 
 .demographic-wrapper {
@@ -68,18 +72,32 @@
   margin-bottom: 0.3rem;
 }
 
-.form-textbox {
-  height: 16rem;
+.weight-select {
+  display: flex;
+  align-items: center;
+}
+
+.form-textbox-container {
+  display: flex;
+  justify-content: center;
   width: 100%;
+  height: 17rem;
+  max-width: 60rem;
+  margin: 0.5rem 0;
+}
+
+.form-textbox {
+  height: 100%;
+  width: 92%;
   max-width: 60rem;
   border-radius: 20px;
   border: none;
   background-color: rgb(224, 221, 234);
   padding: 1rem;
-  font-size: 90%;
-  color: black;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgb(87, 82, 98);
   line-height: 1rem;
-  font-weight: 400;
 }
 
 .form-textbox:focus {
