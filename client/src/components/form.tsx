@@ -33,7 +33,7 @@ const Form: React.FC = () => {
               type="text"
               id="feet"
               name="feet"
-              placeholder="Feet"
+              placeholder="0"
             />
             <span>ft</span>
             <input
@@ -41,7 +41,7 @@ const Form: React.FC = () => {
               type="text"
               id="inches"
               name="inches"
-              placeholder="Inches"
+              placeholder="0"
             />
             <span>in</span>
           </div>
@@ -56,7 +56,7 @@ const Form: React.FC = () => {
               type="weight"
               id="weight"
               name="weight"
-              placeholder="Enter Weight"
+              placeholder="0.0"
             />
             <span>lbs</span>
           </div>

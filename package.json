@@ -28,6 +28,7 @@
   "devDependencies": {
     "@learningfuze/lfz-config": "^1.0.0",
     "@types/react": "^19.0.1",
+    "@types/react-css-modules": "^4.6.8",
     "@types/react-datepicker": "^7.0.0",
     "@types/react-dom": "^19.0.2",
     "@typescript-eslint/eslint-plugin": "^6.3.0",
