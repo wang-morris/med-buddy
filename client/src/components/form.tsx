@@ -2,10 +2,30 @@ import { useState } from 'react';
 import './form.css';
 import Calendar from './calendar';
 
-const Form: React.FC = () => {
+type FormProps = {
+  formData: {
+    sex: string;
+    dob: string;
+    height: { feet: string; inches: string };
+    weight: string;
+    ethnicity: string;
+    additionalInfo: string;
+  };
+  setFormData: React.Dispatch<React.SetStateAction<FormProps['formData']>>;
+};
+
+const Form = ({ formData, setFormData }: FormProps) => {
   const [clearCalendar, setClearCalendar] = useState(false);
 
   function clearForm() {
+    setFormData({
+      sex: '',
+      dob: '',
+      height: { feet: '', inches: '' },
+      weight: '',
+      ethnicity: '',
+      additionalInfo: '',
+    });
     setClearCalendar(true);
     setTimeout(() => setClearCalendar(false), 10);
   }
@@ -15,7 +35,12 @@ const Form: React.FC = () => {
       <div className="form-group">
         <div className="demographic-wrapper">
           <label htmlFor="sex">Sex</label>
-          <select className="demographic-field" id="sex" name="sex">
+          <select
+            className="demographic-field"
+            value={formData.sex}
+            onChange={(e) => setFormData({ ...formData, sex: e.target.value })}
+            id="sex"
+            name="sex">
             <option value="">Select sex</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
@@ -29,6 +54,13 @@ const Form: React.FC = () => {
           <label htmlFor="height">Height</label>
           <div className="height-selection">
             <input
+              value={formData.height.feet}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  height: { ...formData.height, feet: e.target.value },
+                })
+              }
               className="demographic-field"
               type="text"
               id="feet"
@@ -37,6 +69,13 @@ const Form: React.FC = () => {
             />
             <span>ft</span>
             <input
+              value={formData.height.inches}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  height: { ...formData.height, inches: e.target.value },
+                })
+              }
               className="demographic-field"
               type="text"
               id="inches"
@@ -52,6 +91,10 @@ const Form: React.FC = () => {
           <label form="weight">Weight</label>
           <div className="weight-select">
             <input
+              value={formData.weight}
+              onChange={(e) =>
+                setFormData({ ...formData, weight: e.target.value })
+              }
               className="demographic-field"
               type="weight"
               id="weight"
@@ -65,7 +108,14 @@ const Form: React.FC = () => {
       <div className="form-group">
         <div className="demographic-wrapper">
           <label htmlFor="ethnicity">Ethnicity</label>
-          <select className="demographic-field" id="ethnicity" name="ethnicity">
+          <select
+            value={formData.ethnicity}
+            onChange={(e) =>
+              setFormData({ ...formData, ethnicity: e.target.value })
+            }
+            className="demographic-field"
+            id="ethnicity"
+            name="ethnicity">
             <option value="">Select Ethnicity</option>
             <option value="White">White</option>
             <option value="Hispanic or Latino">Hispanic or Latino</option>
@@ -84,6 +134,10 @@ const Form: React.FC = () => {
       </div>
       <div className="form-textbox-container">
         <textarea
+          value={formData.additionalInfo}
+          onChange={(e) =>
+            setFormData({ ...formData, additionalInfo: e.target.value })
+          }
           className="form-textbox"
           id="textbox-id"
           name="textbox-name"
