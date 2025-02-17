@@ -92,7 +92,7 @@
   max-width: 60rem;
   border-radius: 20px;
   border: none;
-  background-color: rgb(224, 221, 234);
+  background-color: rgb(242, 241, 247);
   padding: 1rem;
   font-size: 0.9rem;
   font-weight: 500;
@@ -106,7 +106,8 @@
 
 .clear-button {
   background-color: transparent;
-  text-decoration: underline;
+  color: white;
+;  text-decoration: underline;
   font-size: 90%;
   font-weight: 700;
 }
