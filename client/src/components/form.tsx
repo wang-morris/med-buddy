@@ -14,7 +14,7 @@ type FormProps = {
   setFormData: React.Dispatch<React.SetStateAction<FormProps['formData']>>;
 };
 
-const Form = ({ formData, setFormData }: FormProps) => {
+function Form({ formData, setFormData }: FormProps) {
   const [clearCalendar, setClearCalendar] = useState(false);
 
   function clearForm() {
@@ -48,7 +48,11 @@ const Form = ({ formData, setFormData }: FormProps) => {
           </select>
         </div>
       </div>
-      <Calendar clearCalendar={clearCalendar} />
+      <Calendar
+        dob={formData.dob}
+        setFormData={setFormData}
+        clearCalendar={clearCalendar}
+      />
       <div className="form-group">
         <div className="demographic-wrapper">
           <label htmlFor="height">Height</label>
@@ -149,6 +153,6 @@ const Form = ({ formData, setFormData }: FormProps) => {
       </button>
     </form>
   );
-};
+}
 
 export default Form;
