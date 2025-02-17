@@ -3,14 +3,31 @@ import './calendar.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-function Calendar({ clearCalendar }: { clearCalendar: boolean }) {
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+type CalendarProps = {
+  dob: string;
+  setFormData: (formData: any) => void;
+  clearCalendar: boolean;
+};
+
+function Calendar({ dob, setFormData, clearCalendar }: CalendarProps) {
+  const [selectedDate, setSelectedDate] = useState<Date | null>(
+    dob ? new Date(dob) : null
+  );
 
   useEffect(() => {
     if (clearCalendar) {
       setSelectedDate(null);
+      setFormData((prev) => ({ ...prev, dob: '' }));
     }
-  }, [clearCalendar]);
+  }, [clearCalendar, setFormData]);
+
+  function handleDateChange(date: Date | null) {
+    setSelectedDate(date);
+    setFormData((prev) => ({
+      ...prev,
+      dob: date ? date.toISOString().split('T')[0] : '',
+    }));
+  }
 
   return (
     <div className="form-group">
@@ -19,7 +36,7 @@ function Calendar({ clearCalendar }: { clearCalendar: boolean }) {
         <div className="date-picker-container">
           <DatePicker
             selected={selectedDate}
-            onChange={(date: Date | null) => setSelectedDate(date)}
+            onChange={handleDateChange}
             dateFormat="MM/dd/yyyy"
             showYearDropdown
             scrollableYearDropdown

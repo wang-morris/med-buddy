@@ -1,0 +1,27 @@
+.chat-textbox-container {
+  height: 3.5rem;
+  width: 95%;
+  position: absolute;
+  bottom: 2rem;
+
+.chat-textbox {
+  height: 100%;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 1rem;
+  color: black;
+  background-color: rgb(242, 241, 247);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1rem;
+  overflow: hidden;
+  resize: none;
+  transition: height 0.3s ease-in-out
+}
+
+.chat-textbox:focus {
+  outline: none;
+  height: 6rem;
+}
+
+}

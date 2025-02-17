@@ -16,6 +16,10 @@ export default function App() {
   });
 
   useEffect(() => {
+    console.log('Current formData:', formData);
+  }, [formData]);
+
+  useEffect(() => {
     async function readServerData() {
       try {
         const resp = await fetch('/api/hello');
@@ -26,7 +30,6 @@ export default function App() {
         console.error('Error fetching server data:', error);
       }
     }
-
     readServerData();
   }, []);
 

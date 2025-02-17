@@ -12,8 +12,16 @@ type ChatProps = {
 };
 
 const ChatContainer = ({ formData }: ChatProps) => {
-  // to test if the form data state is being saved correctly
-  return <p>{JSON.stringify(formData)}</p>;
+  return (
+    <footer className="chat-textbox-container">
+      <textarea
+      className="chat-textbox"
+      id="textbox-id"
+      name="textbox-name"
+      placeholder="Ask a medical question about the patient...">
+      </textarea>
+    </footer>
+  )
 };
 
 export default ChatContainer;
