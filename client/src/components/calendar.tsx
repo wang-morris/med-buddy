@@ -9,6 +9,10 @@ type CalendarProps = {
   clearCalendar: boolean;
 };
 
+const CustomDatePicker = (props: any) => {
+  return <DatePicker {...props} />;
+};
+
 function Calendar({ dob, setFormData, clearCalendar }: CalendarProps) {
   const [selectedDate, setSelectedDate] = useState<Date | null>(
     dob ? new Date(dob) : null
@@ -17,13 +21,13 @@ function Calendar({ dob, setFormData, clearCalendar }: CalendarProps) {
   useEffect(() => {
     if (clearCalendar) {
       setSelectedDate(null);
-      setFormData((prev) => ({ ...prev, dob: '' }));
+      setFormData((prev: { dob: string }) => ({ ...prev, dob: '' }));
     }
   }, [clearCalendar, setFormData]);
 
   function handleDateChange(date: Date | null) {
     setSelectedDate(date);
-    setFormData((prev) => ({
+    setFormData((prev: { dob: string }) => ({
       ...prev,
       dob: date ? date.toISOString().split('T')[0] : '',
     }));
@@ -34,9 +38,9 @@ function Calendar({ dob, setFormData, clearCalendar }: CalendarProps) {
       <div className="demographic-wrapper">
         <label htmlFor="dob">Date of Birth</label>
         <div className="date-picker-container">
-          <DatePicker
+          <CustomDatePicker
             selected={selectedDate}
-            onChange={handleDateChange}
+            onChange={(date: Date | null) => handleDateChange(date)}
             dateFormat="MM/dd/yyyy"
             showYearDropdown
             scrollableYearDropdown

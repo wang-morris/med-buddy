@@ -16,6 +16,10 @@ export default function App() {
   });
 
   useEffect(() => {
+    console.log('Current activeComponent:', activeComponent);
+  }, [activeComponent]);
+
+  useEffect(() => {
     console.log('Current formData:', formData);
   }, [formData]);
 
@@ -42,13 +46,16 @@ export default function App() {
       {activeComponent === 'patient context' ? (
         <Form formData={formData} setFormData={setFormData} />
       ) : (
-        <ChatContainer formData={formData} />
+        <ChatContainer />
       )}
-      <div className="footer">
-        <p>
-          CAUTION: MedBuddy provides recommendations based on peer-reviewed data
-          and other reputable sources but is not intended to replace the medical
-          expertise of a licensed healthcare professional.
+      <div
+        className={`footer ${
+          activeComponent === 'ask a question' ? 'hidden' : ''
+        }`}>
+        <p className="disclaimer">
+          CAUTION: MedBuddy is not intended to replace the medical expertise of
+          a licensed healthcare professional. This form is for informational
+          purposes only and does not store identifiable patient data.
         </p>
       </div>
     </>
