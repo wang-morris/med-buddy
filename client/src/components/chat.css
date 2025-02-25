@@ -11,10 +11,10 @@
 .chat-textbox {
   width: 100%;
   height: 100%;
-  padding: 1rem;
+  padding: 1rem 3rem 1rem 1rem;
   border-radius: 1rem;
   background-color: rgb(242, 241, 247);
-  color: black;
+  color: rgb(87, 82, 98);
   font-size: 0.9rem;
   font-weight: 500;
   line-height: 1rem;
@@ -25,9 +25,72 @@
 
 .chat-textbox:focus {
   outline: none;
-  height: 7rem;
+  height: 8rem;
 }
 
 .chat-textbox-container:has(.chat-textbox:focus) {
   bottom: 5rem;
+}
+
+.send-button-container {
+  position: fixed;
+  bottom: 2rem;
+  right: 0;
+  font-size: 0.8rem;
+}
+
+.send-button {
+  height: 3rem;
+  width: 2rem;
+  font-size: 1.25rem;
+  background-color: transparent;
+  color: #4545cf;
+  position: relative;
+  bottom: 0.15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+
+.send-button:hover {
+  color: #1d1d21;
+}
+
+.send-button:focus {
+  color: #4545cf;
+}
+
+.send-button svg {
+  cursor: pointer;
+}
+
+.send-button svg:active {
+  transform: translateY(3px);
+  transition: transform 0.1s ease-in-out;
+}
+
+@media (width >= 700px) {
+  .send-button-container {
+    position: fixed;
+    right: 1rem;
+  }
+
+  .send-button {
+    font-size: 1.4rem;
+  }
+}
+
+@media (width >= 1200px) {
+  .send-button-container {
+    position: fixed;
+    right: 2rem;
+  }
+}
+
+@media (width >= 2000px) {
+  .send-button-container {
+    position: fixed;
+    right: 3rem;
+  }
 }
