@@ -30,3 +30,10 @@
   color: white;
   border: none;
 }
+
+@media (width >=768px) {
+  .toggle-container {
+    width: 20.5rem;
+    height: 2rem;
+  }
+}
