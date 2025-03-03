@@ -15,6 +15,12 @@ export default function App() {
     additionalInfo: '',
   });
 
+  const [shouldResetChat, setShouldResetChat] = useState(false);
+
+  useEffect(() => {
+    setShouldResetChat(true);
+  }, [formData]);
+
   useEffect(() => {
     console.log('Current activeComponent:', activeComponent);
   }, [activeComponent]);
@@ -22,20 +28,6 @@ export default function App() {
   useEffect(() => {
     console.log('Current formData:', formData);
   }, [formData]);
-
-  useEffect(() => {
-    async function readServerData() {
-      try {
-        const resp = await fetch('/api/hello');
-        const data = await resp.json();
-
-        console.log('Data from server:', data);
-      } catch (error) {
-        console.error('Error fetching server data:', error);
-      }
-    }
-    readServerData();
-  }, []);
 
   return (
     <>
@@ -46,7 +38,10 @@ export default function App() {
       {activeComponent === 'patient context' ? (
         <Form formData={formData} setFormData={setFormData} />
       ) : (
-        <ChatContainer />
+        <ChatContainer
+          shouldResetChat={shouldResetChat}
+          setShouldResetChat={setShouldResetChat}
+        />
       )}
       <div
         className={`footer ${
