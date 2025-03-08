@@ -2,10 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #686690;
   height: 40rem;
   width: 100%;
-  border-radius: 20px;
   margin-top: 1rem;
   padding-top: 0.5rem;
 }
@@ -96,7 +94,7 @@
   padding: 1rem;
   font-size: 0.9rem;
   font-weight: 500;
-  color: rgb(87, 82, 98);
+  color: rgb(53, 51, 57);
   line-height: 1rem;
 }
 
@@ -107,7 +105,13 @@
 .clear-button {
   background-color: transparent;
   color: white;
-;  text-decoration: underline;
+  text-decoration: underline;
   font-size: 90%;
   font-weight: 700;
+}
+
+.clear-button:hover,
+.clear-button:focus {
+  border: none;
+  outline: none;
 }

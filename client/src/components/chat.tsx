@@ -2,11 +2,11 @@ import { useEffect, useRef, useState } from 'react';
 import './chat.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleArrowUp } from '@fortawesome/free-solid-svg-icons';
-import { fetchMockApiResponse } from '../mockApi';
+import { fetchOpenAiResponse } from '../api/openAiApi';
 
 interface Message {
   userMessage: string;
-  mockResponse: any;
+  aiResponse: string;
 }
 
 interface ChatContainerProps {
@@ -29,22 +29,30 @@ const ChatContainer = ({
   const handleSendMessage = async () => {
     if (!userMessage.trim()) return;
 
+    const newMessage: Message = {
+      userMessage,
+      aiResponse: 'Thinking...',
+    };
+
+    setMessages([...messages, newMessage]);
+    setUserMessage('');
+
+    const textarea = document.querySelector(
+      '.chat-textbox'
+    ) as HTMLTextAreaElement;
+    if (textarea) {
+      textarea.blur();
+    }
+
     try {
-      const mockData = await fetchMockApiResponse();
+      const aiResponse = await fetchOpenAiResponse(userMessage);
 
-      const responseContext = {
-        userMessage,
-        mockResponse: mockData,
-      };
-
-      const updatedMessages = [...messages, responseContext];
+      const updatedMessages = [...messages, { ...newMessage, aiResponse }];
       setMessages(updatedMessages);
-      localStorage.setItem('chatMessages', JSON.stringify(updatedMessages));
 
-      setMessages([...messages, responseContext]);
-      setUserMessage('');
+      localStorage.setItem('chatMessages', JSON.stringify(updatedMessages));
     } catch (error) {
-      console.error('Error fetching mock data:', error);
+      console.error('Error fetching OpenAI response:', error);
     }
   };
 
@@ -65,12 +73,8 @@ const ChatContainer = ({
       <div className="chat-messages">
         {messages.map((msg, index) => (
           <div key={index}>
-            <p className="user-message">
-              <strong>User:</strong> {msg.userMessage}
-            </p>
-            <p className="chatbot-message">
-              <strong>Mock Response:</strong> {msg.mockResponse.title}
-            </p>
+            <p className="user-message">{msg.userMessage}</p>
+            <p className="chatbot-message">{msg.aiResponse}</p>
           </div>
         ))}
         <div ref={messagesEndRef} />
@@ -78,8 +82,6 @@ const ChatContainer = ({
       <footer className="chat-textbox-container">
         <textarea
           className="chat-textbox"
-          id="textbox-id"
-          name="textbox-name"
           placeholder="Ask a medical question..."
           value={userMessage}
           onChange={(e) => setUserMessage(e.target.value)}
@@ -88,11 +90,12 @@ const ChatContainer = ({
               e.preventDefault();
               handleSendMessage();
             }
-          }}></textarea>
+          }}
+        />
       </footer>
       <div className="send-button-container">
-        <button className="send-button">
-          <FontAwesomeIcon icon={faCircleArrowUp} onClick={handleSendMessage} />
+        <button className="send-button" onClick={handleSendMessage}>
+          <FontAwesomeIcon icon={faCircleArrowUp} />
         </button>
       </div>
     </div>
