@@ -3,6 +3,7 @@ import './chat.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleArrowUp } from '@fortawesome/free-solid-svg-icons';
 import { fetchOpenAiResponse } from '../api/openAiApi';
+import ReactMarkdown from 'react-markdown';
 
 interface Message {
   userMessage: string;
@@ -12,11 +13,20 @@ interface Message {
 interface ChatContainerProps {
   shouldResetChat: boolean;
   setShouldResetChat: (value: boolean) => void;
+  formData: {
+    sex: string;
+    dob: string;
+    height: { feet: string; inches: string };
+    weight: string;
+    ethnicity: string;
+    additionalInfo: string;
+  };
 }
 
 const ChatContainer = ({
   shouldResetChat,
   setShouldResetChat,
+  formData,
 }: ChatContainerProps) => {
   const [messages, setMessages] = useState<Message[]>(() => {
     const savedMessages = localStorage.getItem('chatMessages');
@@ -29,9 +39,20 @@ const ChatContainer = ({
   const handleSendMessage = async () => {
     if (!userMessage.trim()) return;
 
+    const patientContext = `
+      Sex: ${formData.sex},
+      DOB: ${formData.dob},
+      Height: ${formData.height.feet}'${formData.height.inches}",
+      Weight: ${formData.weight} lbs,
+      Ethnicity: ${formData.ethnicity},
+      Additional Info: ${formData.additionalInfo}
+    `;
+
+    console.log('API request patient context', patientContext);
+
     const newMessage: Message = {
       userMessage,
-      aiResponse: 'Thinking...',
+      aiResponse: 'Generating response...',
     };
 
     setMessages([...messages, newMessage]);
@@ -45,7 +66,7 @@ const ChatContainer = ({
     }
 
     try {
-      const aiResponse = await fetchOpenAiResponse(userMessage);
+      const aiResponse = await fetchOpenAiResponse(userMessage, patientContext);
 
       const updatedMessages = [...messages, { ...newMessage, aiResponse }];
       setMessages(updatedMessages);
@@ -74,7 +95,9 @@ const ChatContainer = ({
         {messages.map((msg, index) => (
           <div key={index}>
             <p className="user-message">{msg.userMessage}</p>
-            <p className="chatbot-message">{msg.aiResponse}</p>
+            <p className="chatbot-message">
+              <ReactMarkdown>{msg.aiResponse}</ReactMarkdown>
+            </p>
           </div>
         ))}
         <div ref={messagesEndRef} />
