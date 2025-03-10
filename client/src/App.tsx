@@ -41,6 +41,7 @@ export default function App() {
         <ChatContainer
           shouldResetChat={shouldResetChat}
           setShouldResetChat={setShouldResetChat}
+          formData={formData}
         />
       )}
       <div
