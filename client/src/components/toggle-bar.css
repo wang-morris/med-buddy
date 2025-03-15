@@ -3,21 +3,24 @@
   justify-content: center;
   align-items: center;
   width: 20rem;
-  height: 1.9rem;
+  height: 1.7rem;
   background-color: rgb(189, 183, 210);
-  border-radius: 20px;
+  border-radius: 0.3rem;
+  overflow: hidden;
 }
 
 .toggle-item {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 0.8rem;
   font-weight: 600;
-  width: 12rem;
-  height: 1.5rem;
-  border-radius: 20px;
-  padding: 0.2rem;
-  margin: 0.2rem;
-  padding-bottom: 1.5rem;
+  border-radius: none;
   border: none;
+  cursor: pointer;
+  position: relative;
 }
 
 .toggle-item.inactive-toggle {
@@ -31,9 +34,34 @@
   border: none;
 }
 
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.left-arrow,
+.right-arrow {
+  font-size: 1rem;
+  animation: pulse 1s infinite ease-in-out;
+}
+
+.toggle-item.active-toggle .right-arrow,
+.toggle-item.active-toggle .left-arrow {
+  visibility: hidden;
+}
+
 @media (width >=768px) {
   .toggle-container {
     width: 20.5rem;
-    height: 2rem;
+    height: 1.8rem;
   }
 }

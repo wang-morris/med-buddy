@@ -1,3 +1,14 @@
+.instructions {
+  font-size: 0.8rem;
+  font-weight: 500;
+  position: relative;
+  top: 0.3rem;
+}
+
+.right-arrow {
+  margin-left: 0.2rem;
+}
+
 .app-form {
   display: flex;
   flex-direction: column;
@@ -5,7 +16,7 @@
   height: 40rem;
   width: 100%;
   margin-top: 1rem;
-  padding-top: 0.5rem;
+  padding-top: 0;
 }
 
 .form-group {
@@ -96,6 +107,13 @@
   font-weight: 500;
   color: rgb(53, 51, 57);
   line-height: 1rem;
+  resize: none;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.form-textbox::-webkit-scrollbar {
+  display: none;
 }
 
 .form-textbox:focus {
