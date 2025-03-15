@@ -105,7 +105,7 @@ const ChatContainer = ({
       <footer className="chat-textbox-container">
         <textarea
           className="chat-textbox"
-          placeholder="Ask a medical question..."
+          placeholder="Ask a question related the patient..."
           value={userMessage}
           onChange={(e) => setUserMessage(e.target.value)}
           onKeyDown={(e) => {
