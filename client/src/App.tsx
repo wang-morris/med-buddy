@@ -21,14 +21,6 @@ export default function App() {
     setShouldResetChat(true);
   }, [formData]);
 
-  useEffect(() => {
-    console.log('Current activeComponent:', activeComponent);
-  }, [activeComponent]);
-
-  useEffect(() => {
-    console.log('Current formData:', formData);
-  }, [formData]);
-
   return (
     <>
       <header>

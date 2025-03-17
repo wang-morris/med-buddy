@@ -9,10 +9,6 @@ type CalendarProps = {
   clearCalendar: boolean;
 };
 
-const CustomDatePicker = (props: any) => {
-  return <DatePicker {...props} />;
-};
-
 function Calendar({ dob, setFormData, clearCalendar }: CalendarProps) {
   const [selectedDate, setSelectedDate] = useState<Date | null>(
     dob ? new Date(dob) : null
@@ -38,9 +34,9 @@ function Calendar({ dob, setFormData, clearCalendar }: CalendarProps) {
       <div className="demographic-wrapper">
         <label htmlFor="dob">Date of Birth</label>
         <div className="date-picker-container">
-          <CustomDatePicker
+          <DatePicker
             selected={selectedDate}
-            onChange={(date: Date | null) => handleDateChange(date)}
+            onChange={handleDateChange}
             dateFormat="MM/dd/yyyy"
             showYearDropdown
             scrollableYearDropdown

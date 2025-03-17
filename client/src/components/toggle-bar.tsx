@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import './toggle-bar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 
 interface ToggleBarProps {
   setActiveComponent: (component: string) => void;

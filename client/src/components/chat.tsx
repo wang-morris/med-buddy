@@ -48,8 +48,6 @@ const ChatContainer = ({
       Additional Info: ${formData.additionalInfo}
     `;
 
-    console.log('API request patient context', patientContext);
-
     const newMessage: Message = {
       userMessage,
       aiResponse: 'Generating response...',
@@ -67,8 +65,8 @@ const ChatContainer = ({
 
     try {
       const aiResponse = await fetchOpenAiResponse(userMessage, patientContext);
-
       const updatedMessages = [...messages, { ...newMessage, aiResponse }];
+
       setMessages(updatedMessages);
 
       localStorage.setItem('chatMessages', JSON.stringify(updatedMessages));
@@ -78,7 +76,9 @@ const ChatContainer = ({
   };
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    setTimeout(() => {
+      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
   }, [messages]);
 
   useEffect(() => {

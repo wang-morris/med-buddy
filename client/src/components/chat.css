@@ -70,7 +70,7 @@
 }
 
 .send-button svg:active {
-  transform: translateY(3px);
+  transform: translateY(2px);
   transition: transform 0.1s ease-in-out;
 }
 
@@ -81,7 +81,6 @@
   margin: 0.5rem auto;
   height: 77vh;
   overflow-y: auto;
-  -ms-overflow-style: none;
 }
 
 .chat-messages::-webkit-scrollbar {
@@ -114,7 +113,6 @@
 
 @media (width >= 700px) {
   .send-button-container {
-    position: fixed;
     right: 1rem;
   }
 
@@ -125,7 +123,6 @@
 
 @media (width >= 1200px) {
   .send-button-container {
-    position: fixed;
     right: 2rem;
   }
 
@@ -144,7 +141,6 @@
 
 @media (width >= 2000px) {
   .send-button-container {
-    position: fixed;
     right: 3rem;
   }
 }
