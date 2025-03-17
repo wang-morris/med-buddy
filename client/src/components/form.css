@@ -29,7 +29,7 @@
   height: 3rem;
   width: 92%;
   max-width: 30rem;
-  margin: 0.3rem;
+  margin: 0.3rem auto;
   font-weight: 700;
 }
 
@@ -79,6 +79,10 @@
   width: 100%;
   max-width: 30rem;
   margin-bottom: 0.3rem;
+}
+
+.demographic-field {
+  appearance: none;
 }
 
 .weight-select {
