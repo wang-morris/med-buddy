@@ -103,7 +103,7 @@ const ChatContainer = ({
           <div key={index}>
             <p className="user-message">{msg.userMessage}</p>
             <p className="chatbot-message">
-              <ReactMarkdown>{msg.aiResponse}</ReactMarkdown>
+              <ReactMarkdown children={msg.aiResponse} />
             </p>
           </div>
         ))}
