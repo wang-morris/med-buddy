@@ -48,6 +48,7 @@ function Form({ formData, setFormData }: FormProps) {
           </select>
         </div>
       </div>
+      {/* Utilized a third-party React datepicker component */}
       <Calendar
         dob={formData.dob}
         setFormData={setFormData}
@@ -69,6 +70,7 @@ function Form({ formData, setFormData }: FormProps) {
                 }
               }}
               onKeyDown={(e) => {
+                // Prevents invalid key inputs
                 if (
                   !/^[0-9]$/.test(e.key) &&
                   e.key !== 'Backspace' &&
@@ -128,12 +130,14 @@ function Form({ formData, setFormData }: FormProps) {
               value={formData.weight}
               onChange={(e) => {
                 const value = e.target.value;
+                // Allows 3 digits and 1 decimal
                 if (/^\d{0,3}(\.\d{0,1})?$/.test(value)) {
                   setFormData({ ...formData, weight: value });
                 }
               }}
               onKeyDown={(e) => {
                 if (
+                  // Prevents non-numerics values and more than 1 decimal in a row
                   !/^[0-9.]$/.test(e.key) &&
                   e.key !== 'Backspace' &&
                   e.key !== 'Delete' &&

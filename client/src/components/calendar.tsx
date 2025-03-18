@@ -10,10 +10,13 @@ type CalendarProps = {
 };
 
 function Calendar({ dob, setFormData, clearCalendar }: CalendarProps) {
+  // sets selected date as either the provided value or null if there is no date given
   const [selectedDate, setSelectedDate] = useState<Date | null>(
     dob ? new Date(dob) : null
   );
 
+  /* clears the date if clearCalendar is true
+     and updates formData to reset the dob field */
   useEffect(() => {
     if (clearCalendar) {
       setSelectedDate(null);
@@ -21,6 +24,8 @@ function Calendar({ dob, setFormData, clearCalendar }: CalendarProps) {
     }
   }, [clearCalendar, setFormData]);
 
+  /* handles date selection changes from the DatePicker
+     and converts the date to YYYY-MM-DD format and updates formData */
   function handleDateChange(date: Date | null) {
     setSelectedDate(date);
     setFormData((prev: { dob: string }) => ({

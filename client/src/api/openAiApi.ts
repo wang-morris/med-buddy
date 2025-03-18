@@ -5,6 +5,7 @@ export const fetchOpenAiResponse = async (
   const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
 
   try {
+    // request is sent to OpenAI API with userMessage and patientContext in mind
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
@@ -15,6 +16,7 @@ export const fetchOpenAiResponse = async (
         model: 'gpt-4o-mini',
         messages: [
           {
+            // system prompt used to allow chatbot to know its use case
             role: 'system',
             content: `You are MedBuddy, an AI assistant designed for doctors, nurses, and other healthcare professionals.
               - Your primary goal is to provide quick, accurate medical references and reminders.
