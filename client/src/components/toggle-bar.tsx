@@ -10,10 +10,12 @@ interface ToggleBarProps {
 function ToggleBar({ setActiveComponent }: ToggleBarProps) {
   const [activeButton, setActiveButton] = useState('patient context');
 
+  // returns appropriate className which determines it's active or inactive CSS styling
   function getClassName(button: string) {
     return activeButton === button ? 'active-toggle' : 'inactive-toggle';
   }
 
+  // updates state and gets passed to App.tsx to determine whether the form or the chatbot UI is displayed
   function handleButtonClick(button: string) {
     setActiveButton(button);
     setActiveComponent(button);
