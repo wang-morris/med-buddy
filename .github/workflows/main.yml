@@ -13,6 +13,7 @@ jobs:
     env:
       EC2_HOST: ${{ secrets.EC2_HOST }}
       SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      VITE_OPENAI_API_KEY: ${{ secrets.VITE_OPENAI_API_KEY }}
     steps:
       - name: Checkout source code
         uses: actions/checkout@v3
@@ -20,6 +21,8 @@ jobs:
       - name: Build project
         run: |
           npm ci
+          echo "VITE_OPENAI_API_KEY=${{ env.VITE_OPENAI_API_KEY }}" >> .env
+          echo "VITE_OPENAI_API_KEY=${{ env.VITE_OPENAI_API_KEY }}" >> $GITHUB_ENV  #
           npm run build
 
       - name: Copy project to EC2
@@ -39,6 +42,9 @@ jobs:
           key: ${{ env.SSH_PRIVATE_KEY }}
           script: |
             cd /home/ec2-user/project
+            echo "VITE_OPENAI_API_KEY=${{ env.VITE_OPENAI_API_KEY }}" >> .env  # 
+            echo "source /home/ec2-user/project/.env" >> ~/.bashrc
+            source ~/.bashrc  #
             sh scripts/ec2env.sh
             npm run db:import
-            pm2 start --time npm -- start
+            pm2 restart all || pm2 start --time npm -- start  #
