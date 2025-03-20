@@ -41,9 +41,10 @@ export default function App() {
           activeComponent === 'ask a question' ? 'hidden' : ''
         }`}>
         <p className="disclaimer">
-          CAUTION: MedBuddy is not intended to replace the medical expertise of
-          a licensed healthcare professional. This form is for informational
-          purposes only and does not store identifiable patient data.
+          ⚠️ CAUTION: MedBuddy provides AI-generated responses for reference
+          only. It does not replace the medical expertise of a licensed
+          healthcare professional. Patient context is used only for
+          informational purposes and is never permanently stored.
         </p>
       </div>
     </>
