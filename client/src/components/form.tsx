@@ -201,7 +201,7 @@ function Form({ formData, setFormData }: FormProps) {
         />
       </div>
       <button type="reset" className="clear-button" onClick={clearForm}>
-        Clear Form
+        Reset Fields
       </button>
     </form>
   );
