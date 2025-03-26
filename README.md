@@ -8,10 +8,6 @@ I created MedBuddy to help healthcare professionals streamline their decision ma
 
 MedBuddy also allowed me to deepen my understanding of *AI and API integration* in web development, while ensuring compliance with HIPAA and ethical medical practice. 
 
-## Live Demo
-
-Try the application live at 
-
 ## Technologies Used
 
 - React
@@ -23,10 +19,6 @@ Try the application live at
 - User can enter data in patient context form
 - User can switch views between the form and the chatbot
 - User can send and receive messages 
-
-## Preview
-
-
 
 ## Stretch Features
 - User can create new chatlogs
