@@ -9,7 +9,7 @@ I created MedBuddy to help healthcare professionals streamline their decision ma
 MedBuddy also allowed me to better understand the use of AI and API integration in web development, while ensuring compliance with HIPAA and ethical medical practice. 
 
 ## Live Demo
-Try the application live at [https://medbuddychat.com/]
+Try the application live at [(https://med-buddy-chat.vercel.app/)]
 
 ## Technologies Used
 
