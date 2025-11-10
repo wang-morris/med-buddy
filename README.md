@@ -21,7 +21,12 @@ Try the application live at [(https://med-buddy-chat.vercel.app/)]
 ## Features
 - User can enter data in patient context form
 - User can switch views between the form and the chatbot
-- User can send and receive messages 
+- User can send and receive messages
+
+## Preview
+![Adding Patient Context](./preview-gifs/med-buddy-preview-1.gif)
+
+![Using Chat Assistant](./preview-gifs/med-buddy-preview-2.gif)
 
 ## Stretch Features
 - User can create new chatlogs
