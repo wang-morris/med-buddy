@@ -6,7 +6,7 @@ export const fetchOpenAiResponse = async (
 
   try {
     // request is sent to OpenAI API with userMessage and patientContext in mind
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    const response = await fetch('/api/chat', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
