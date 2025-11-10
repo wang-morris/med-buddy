@@ -1,0 +1,4 @@
+{
+  "devCommand": "npm run dev --prefix client",
+  "buildCommand": "npm run build --prefix client"
+}
